@@ -1,6 +1,6 @@
 Name: cadaver
 Version: 0.22.1
-Release: 1
+Release: 2
 Summary: Command-line WebDAV client
 License: GPL
 Group: Applications/Internet
@@ -19,7 +19,7 @@ and resource locking.
 %setup -q
 
 %build
-%configure --with-neon=%{_prefix}
+%configure --with-neon=%{_prefix} LDFLAGS=-pie CFLAGS="$RPM_OPT_FLAGS -fpie"
 make %{?_smp_mflags}
 
 %install
@@ -36,6 +36,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/*/*
 
 %changelog
+* Wed May 12 2004 Joe Orton <jorton@redhat.com> 0.22.1-2
+- build as PIE
+
 * Tue Apr 20 2004 Joe Orton <jorton@redhat.com> 0.22.1-1
 - update to 0.22.1
 
