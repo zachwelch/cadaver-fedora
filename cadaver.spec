@@ -1,14 +1,13 @@
-
 Name: cadaver
-Version: 0.20.5
-Release: 6
+Version: 0.22.0
+Release: 1
 Summary: Command-line WebDAV client
 License: GPL
 Group: Applications/Internet
 Source: http://www.webdav.org/cadaver/%{name}-%{version}.tar.gz
 URL: http://www.webdav.org/cadaver/
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
-BuildPrereq: libxml2-devel, openssl-devel, pkgconfig, readline-devel
+BuildPrereq: neon-devel >= 0:0.24.0-1 
 
 %description
 cadaver is a command-line WebDAV client, with support for file upload, 
@@ -20,13 +19,8 @@ and resource locking.
 %setup -q
 
 %build
-# force the XML parser to be libxml2; over-ride SSL version checks
-if pkg-config openssl ; then
-	CPPFLAGS=`pkg-config --cflags openssl`; export CPPFLAGS
-	LDFLAGS=`pkg-config --libs openssl`; export LDFLAGS
-fi
-%configure --with-libxml2 --with-ssl --with-force-ssl --with-included-neon
-make
+%configure --with-neon=%{_prefix}
+make %{?_smp_mflags}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -42,6 +36,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/*/*
 
 %changelog
+* Fri Oct  3 2003 Joe Orton <jorton@redhat.com> 0.22.0-1
+- update to 0.22.0; use system neon
+
+* Tue Jul 22 2003 Nalin Dahyabhai <nalin@redhat.com> 0.21.0-2
+- rebuild
+
+* Mon Jul 21 2003 Joe Orton <jorton@redhat.com> 0.21.0-1
+- update to 0.21.0
+
+* Wed Jun 04 2003 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
 * Wed Jan 22 2003 Tim Powers <timp@redhat.com>
 - rebuilt
 
