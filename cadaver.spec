@@ -1,79 +1,61 @@
+
 Name: cadaver
-Version: 0.19.1
-Release: 6
-Source: http://www.webdav.org/cadaver/cadaver-%{version}.tar.gz
-Patch0: cadaver-0.19.1-libxml2418.patch
-Group: Applications/Internet
-URL: http://www.webdav.org/cadaver/
+Version: 0.20.5
+Release: 2
+Summary: Command-line WebDAV client
 License: GPL
+Group: Applications/Internet
+Source: http://www.webdav.org/cadaver/%{name}-%{version}.tar.gz
+URL: http://www.webdav.org/cadaver/
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
-Summary: A command-line WebDAV client.
-BuildPrereq: libxml2-devel, ncurses-devel, openssl-devel, readline-devel
+BuildPrereq: libxml2-devel, openssl-devel, readline-devel
 
 %description
-cadaver is a command-line WebDAV client. It supports file upload,
-download, on-screen display, namespace operations (move/copy),
-collection creation and deletion, and locking operations.
+cadaver is a command-line WebDAV client, with support for file upload, 
+download, on-screen display, in-place editing, namespace operations
+(move/copy), collection creation and deletion, property manipulation, 
+and resource locking.
 
 %prep
 %setup -q
-%patch -p0 -b .lx2418
 
 %build
-%configure --with-ssl --with-libxml2
+# force the XML parser to be libxml2; over-ride SSL version checks
+%configure --with-libxml2 --with-ssl --with-force-ssl
 make
 
-%clean
-rm -fr $RPM_BUILD_ROOT
-
 %install
-rm -fr $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_ROOT
 %makeinstall
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING* FAQ INSTALL INTEROP NEWS README THANKS TODO
 %{_bindir}/*
+%doc NEWS FAQ THANKS TODO COPYING README ChangeLog
 %{_mandir}/*/*
 
 %changelog
-* Fri Jun 21 2002 Tim Powers <timp@redhat.com>
-- automated rebuild
+* Fri Aug 30 2002 Joe Orton <jorton@redhat.com> 0.20.5-2
+- update to 0.20.5; many bug fixes, minor security-related
+ fixes, much improved SSL support, a few new features.
 
-* Sun May 26 2002 Tim Powers <timp@redhat.com>
-- automated rebuild
+* Thu Aug 22 2002 Joe Orton <jorton@redhat.com> 0.20.4-1
+- add --with-force-ssl
 
-* Fri May 17 2002 Nalin Dahyabhai <nalin@redhat.com>  0.19.1-4
-- rebuild in new environment
+* Wed May  1 2002 Joe Orton <joe@manyfish.co.uk>
+- add man page
 
-* Mon Apr 15 2002 Joe Orton <jorton@redhat.com>  0.19.1-3
-- fix compatibility with libxml 2.4.18 (#63358), remove apache-devel prereq
+* Sat Jan 19 2002 Joe Orton <joe@manyfish.co.uk>
+- updated description
 
-* Fri Feb 22 2002 Nalin Dahyabhai <nalin@redhat.com>  0.19.1-2
-- rebuild
+* Mon Nov 19 2001 Joe Orton <joe@manyfish.co.uk>
+- Merge changes from Nalin Dahyabhai <nalin@redhat.com>.
 
-* Wed Jan 23 2002 Nalin Dahyabhai <nalin@redhat.com>  0.19.1-1
-- update to 0.19.1
-- depend on libxml2 instead of libxml
+* Fri Feb 11 2000 Joe Orton <joe@orton.demon.co.uk>
+- Text descriptions modified
 
-* Wed Jan 09 2002 Tim Powers <timp@redhat.com> 0.17.0-3
-- automated rebuild
-
-* Thu Jul 12 2001 Nalin Dahyabhai <nalin@redhat.com> 0.17.0-2
-- add a couple of missing build prerequisites
-- enable use of libxml
-
-* Wed May 22 2001 Nalin Dahyabhai <nalin@redhat.com> 0.17.0-1
-- update to 0.17.0
-
-* Fri Mar  2 2001 Tim Powers <timp@redhat.com>
-- rebuilt against openssl-0.9.6-1
-
-* Fri Jan 19 2001 Nalin Dahyabhai <nalin@redhat.com>
-- update to 0.16.0
-
-* Mon Nov 20 2000 Tim Powers <timp@redhat.com>
-- rebuilt to fix bad dir perms
-
-* Wed Nov  8 2000 Nalin Dahyabhai <nalin@redhat.com>
-- initial Power Tools build
+* Thu Feb 10 2000 Lee Mallabone <lee0@callnetuk.com>
+- Initial creation.
