@@ -1,6 +1,6 @@
 Name: cadaver
 Version: 0.22.1
-Release: 2
+Release: 3
 Summary: Command-line WebDAV client
 License: GPL
 Group: Applications/Internet
@@ -36,6 +36,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/*/*
 
 %changelog
+* Tue Jun 15 2004 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
 * Wed May 12 2004 Joe Orton <jorton@redhat.com> 0.22.1-2
 - build as PIE
 
