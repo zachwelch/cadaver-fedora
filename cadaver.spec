@@ -1,6 +1,6 @@
 Name: cadaver
 Version: 0.19.1
-Release: 5
+Release: 6
 Source: http://www.webdav.org/cadaver/cadaver-%{version}.tar.gz
 Patch0: cadaver-0.19.1-libxml2418.patch
 Group: Applications/Internet
@@ -37,6 +37,9 @@ rm -fr $RPM_BUILD_ROOT
 %{_mandir}/*/*
 
 %changelog
+* Fri Jun 21 2002 Tim Powers <timp@redhat.com>
+- automated rebuild
+
 * Sun May 26 2002 Tim Powers <timp@redhat.com>
 - automated rebuild
 
