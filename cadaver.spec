@@ -1,6 +1,6 @@
 Name: cadaver
 Version: 0.19.1
-Release: 3
+Release: 5
 Source: http://www.webdav.org/cadaver/cadaver-%{version}.tar.gz
 Patch0: cadaver-0.19.1-libxml2418.patch
 Group: Applications/Internet
@@ -20,7 +20,7 @@ collection creation and deletion, and locking operations.
 %patch -p0 -b .lx2418
 
 %build
-%configure --with-ssl=%{_prefix} --with-libxml2
+%configure --with-ssl --with-libxml2
 make
 
 %clean
@@ -37,6 +37,12 @@ rm -fr $RPM_BUILD_ROOT
 %{_mandir}/*/*
 
 %changelog
+* Sun May 26 2002 Tim Powers <timp@redhat.com>
+- automated rebuild
+
+* Fri May 17 2002 Nalin Dahyabhai <nalin@redhat.com>  0.19.1-4
+- rebuild in new environment
+
 * Mon Apr 15 2002 Joe Orton <jorton@redhat.com>  0.19.1-3
 - fix compatibility with libxml 2.4.18 (#63358), remove apache-devel prereq
 
