@@ -2,5 +2,6 @@
 # $Id$
 NAME := cadaver
 SPECFILE = $(firstword $(wildcard *.spec))
+UPSTREAM_CHECKS := asc
 
 include ../common/Makefile.common
