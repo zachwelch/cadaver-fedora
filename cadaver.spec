@@ -1,13 +1,13 @@
 Name: cadaver
 Version: 0.17.0
-Release: 1
+Release: 2
 Source: http://www.webdav.org/cadaver/cadaver-%{version}.tar.gz
 Group: Applications/Internet
 URL: http://www.webdav.org/cadaver/
 License: GPL
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Summary: A command-line WebDAV client.
-BuildPrereq: apache-devel, expat-devel, openssl-devel
+BuildPrereq: apache-devel, libxml-devel, ncurses-devel, openssl-devel, readline-devel
 
 %description
 cadaver is a command-line WebDAV client. It supports file upload,
@@ -18,7 +18,7 @@ collection creation and deletion, and locking operations.
 %setup -q
 
 %build
-%configure --with-ssl=%{_prefix}
+%configure --with-ssl=%{_prefix} --enable-libxml
 make
 
 %clean
@@ -34,6 +34,10 @@ rm -fr $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Thu Jul 12 2001 Nalin Dahyabhai <nalin@redhat.com>
+- add a couple of missing build prerequisites
+- enable use of libxml
+
 * Wed May 22 2001 Nalin Dahyabhai <nalin@redhat.com>
 - update to 0.17.0
 
