@@ -1,6 +1,6 @@
 Name: cadaver
-Version: 0.22.2
-Release: 3.1
+Version: 0.22.3
+Release: 1
 Summary: Command-line WebDAV client
 License: GPL
 Group: Applications/Internet
@@ -26,16 +26,21 @@ make %{?_smp_mflags}
 rm -rf $RPM_BUILD_ROOT
 %makeinstall
 
+%find_lang %{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(-,root,root)
 %{_bindir}/*
 %doc NEWS FAQ THANKS TODO COPYING README ChangeLog
 %{_mandir}/*/*
 
 %changelog
+* Fri Jan  6 2006 Joe Orton <jorton@redhat.com> 0.22.3-1
+- update to 0.22.3
+
 * Fri Dec 09 2005 Jesse Keating <jkeating@redhat.com>
 - rebuilt
 
