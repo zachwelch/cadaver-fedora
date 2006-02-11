@@ -1,6 +1,6 @@
 Name: cadaver
 Version: 0.22.3
-Release: 2.1
+Release: 2.2
 Summary: Command-line WebDAV client
 License: GPL
 Group: Applications/Internet
@@ -38,6 +38,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/*/*
 
 %changelog
+* Fri Feb 10 2006 Jesse Keating <jkeating@redhat.com> - 0.22.3-2.2
+- bump again for double-long bug on ppc(64)
+
 * Tue Feb 07 2006 Jesse Keating <jkeating@redhat.com> - 0.22.3-2.1
 - rebuilt for new gcc4.1 snapshot and glibc changes
 
