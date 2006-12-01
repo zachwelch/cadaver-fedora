@@ -1,13 +1,13 @@
 Name: cadaver
 Version: 0.22.3
-Release: 5
+Release: 6
 Summary: Command-line WebDAV client
 License: GPL
 Group: Applications/Internet
 Source: http://www.webdav.org/cadaver/%{name}-%{version}.tar.gz
 URL: http://www.webdav.org/cadaver/
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
-BuildRequires: neon-devel >= 0:0.24.0-1, readline-devel
+BuildRequires: neon-devel >= 0:0.24.0-1, readline-devel, ncurses-devel
 
 %description
 cadaver is a command-line WebDAV client, with support for file upload, 
@@ -38,6 +38,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/*/*
 
 %changelog
+* Fri Dec  1 2006 Joe Orton <jorton@redhat.com> 0.22.3-6
+- BR ncurses-devel, fix readline support
+
 * Wed Nov 22 2006 Joe Orton <jorton@redhat.com> 0.22.3-5
 - rebuild
 
