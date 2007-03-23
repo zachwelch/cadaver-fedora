@@ -1,12 +1,12 @@
 Name: cadaver
-Version: 0.22.3
-Release: 6
+Version: 0.22.5
+Release: 2
 Summary: Command-line WebDAV client
 License: GPL
 Group: Applications/Internet
 Source: http://www.webdav.org/cadaver/%{name}-%{version}.tar.gz
 URL: http://www.webdav.org/cadaver/
-BuildRoot: %{_tmppath}/%{name}-%{version}-root
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: neon-devel >= 0:0.24.0-1, readline-devel, ncurses-devel
 
 %description
@@ -19,7 +19,8 @@ and resource locking.
 %setup -q
 
 %build
-%configure --with-neon=%{_prefix} LDFLAGS=-pie CFLAGS="$RPM_OPT_FLAGS -fpie"
+export LDFLAGS=-pie CFLAGS="$RPM_OPT_FLAGS -fpie"
+%configure --with-neon=%{_prefix} --enable-nls
 make %{?_smp_mflags}
 
 %install
@@ -38,6 +39,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/*/*
 
 %changelog
+* Fri Mar 23 2007 Joe Orton <jorton@redhat.com> 0.22.5-2
+- update to 0.22.5
+- use approved BuildRoot
+
 * Fri Dec  1 2006 Joe Orton <jorton@redhat.com> 0.22.3-6
 - BR ncurses-devel, fix readline support
 
