@@ -1,8 +1,8 @@
 Name: cadaver
 Version: 0.22.5
-Release: 2
+Release: 3
 Summary: Command-line WebDAV client
-License: GPL
+License: GPLv2+
 Group: Applications/Internet
 Source: http://www.webdav.org/cadaver/%{name}-%{version}.tar.gz
 URL: http://www.webdav.org/cadaver/
@@ -39,6 +39,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/*/*
 
 %changelog
+* Mon Aug 20 2007 Joe Orton <jorton@redhat.com> 0.22.5-3
+- fix License
+
 * Fri Mar 23 2007 Joe Orton <jorton@redhat.com> 0.22.5-2
 - update to 0.22.5
 - use approved BuildRoot
