@@ -1,6 +1,6 @@
 Name: cadaver
 Version: 0.23.2
-Release: 3
+Release: 4
 Summary: Command-line WebDAV client
 License: GPLv2+
 Group: Applications/Internet
@@ -19,7 +19,7 @@ and resource locking.
 %setup -q
 
 %build
-export LDFLAGS=-pie CFLAGS="$RPM_OPT_FLAGS -fpie"
+export LDFLAGS=-pie CFLAGS="$RPM_OPT_FLAGS -fPIE"
 %configure --with-neon=%{_prefix} --enable-nls
 make %{?_smp_mflags}
 
@@ -39,6 +39,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/*/*
 
 %changelog
+* Sat Mar 29 2008 Joe Orton <jorton@redhat.com> 0.23.2-4
+- build with -fPIE not -fpie, might fix the SPARC build
+
 * Mon Feb 11 2008 Joe Orton <jorton@redhat.com> 0.23.2-3
 - BuildRequire gettext
 
