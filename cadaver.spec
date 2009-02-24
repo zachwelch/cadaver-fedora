@@ -1,6 +1,6 @@
 Name: cadaver
 Version: 0.23.2
-Release: 4
+Release: 5
 Summary: Command-line WebDAV client
 License: GPLv2+
 Group: Applications/Internet
@@ -39,6 +39,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/*/*
 
 %changelog
+* Mon Feb 23 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.23.2-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
 * Sat Mar 29 2008 Joe Orton <jorton@redhat.com> 0.23.2-4
 - build with -fPIE not -fpie, might fix the SPARC build
 
