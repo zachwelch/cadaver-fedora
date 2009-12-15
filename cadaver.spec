@@ -1,6 +1,6 @@
 Name: cadaver
-Version: 0.23.2
-Release: 6
+Version: 0.23.3
+Release: 1%{?dist}
 Summary: Command-line WebDAV client
 License: GPLv2+
 Group: Applications/Internet
@@ -39,6 +39,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/*/*
 
 %changelog
+* Tue Dec 15 2009 Joe Orton <jorton@redhat.com> - 0.23.3-1
+- update to 0.23.3
+
 * Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.23.2-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
