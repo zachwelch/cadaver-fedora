@@ -1,12 +1,12 @@
 Name: cadaver
 Version: 0.23.3
-Release: 7%{?dist}
+Release: 8%{?dist}
 Summary: Command-line WebDAV client
 License: GPLv2+
 Group: Applications/Internet
 Source: http://www.webdav.org/cadaver/%{name}-%{version}.tar.gz
+Patch0: cadaver-0.23.3-neon030.patch
 URL: http://www.webdav.org/cadaver/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: neon-devel >= 0.27.0, readline-devel, ncurses-devel, gettext
 
 %description
@@ -17,6 +17,7 @@ and resource locking.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 export LDFLAGS=-pie CFLAGS="$RPM_OPT_FLAGS -fPIE"
@@ -24,21 +25,19 @@ export LDFLAGS=-pie CFLAGS="$RPM_OPT_FLAGS -fPIE"
 make %{?_smp_mflags}
 
 %install
-rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
 %find_lang %{name}
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %doc NEWS FAQ THANKS TODO COPYING README ChangeLog
 %{_bindir}/*
 %{_mandir}/*/*
 
 %changelog
+* Thu Jun 19 2014 Yaakov Selkowitz <yselkowi@redhat.com> - 0.23.3-8
+- Fix FTBFS with neon-0.30 (#992037, #1106029)
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.23.3-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
