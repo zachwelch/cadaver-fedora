@@ -1,6 +1,6 @@
 Name: cadaver
 Version: 0.23.3
-Release: 8%{?dist}
+Release: 9%{?dist}
 Summary: Command-line WebDAV client
 License: GPLv2+
 Group: Applications/Internet
@@ -35,6 +35,9 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{_mandir}/*/*
 
 %changelog
+* Fri Aug 15 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.23.3-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
 * Thu Jun 19 2014 Yaakov Selkowitz <yselkowi@redhat.com> - 0.23.3-8
 - Fix FTBFS with neon-0.30 (#992037, #1106029)
 
