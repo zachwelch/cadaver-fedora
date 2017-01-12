@@ -1,6 +1,6 @@
 Name: cadaver
 Version: 0.23.3
-Release: 11%{?dist}
+Release: 12%{?dist}
 Summary: Command-line WebDAV client
 License: GPLv2+
 Group: Applications/Internet
@@ -35,6 +35,9 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{_mandir}/*/*
 
 %changelog
+* Thu Jan 12 2017 Igor Gnatenko <ignatenko@redhat.com> - 0.23.3-12
+- Rebuild for readline 7.x
+
 * Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.23.3-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
